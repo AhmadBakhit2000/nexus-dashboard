@@ -1,6 +1,8 @@
-import { useSettings } from "../../context/SettingsContext";
+import { useSettings } from "../../context/useSettings";
 import { integrations } from "../../data/mock";
 import { card } from "../common/styles";
+
+const COLUMNS = ["app", "type", "rate", "profit"] as const;
 
 export default function IntegrationsTable() {
   const { t } = useSettings();
@@ -14,8 +16,8 @@ export default function IntegrationsTable() {
         <table className="w-full text-sm">
           <thead>
             <tr className="bg-slate-50 text-xs text-slate-400 dark:bg-slate-800">
-              {["app", "type", "rate", "profit"].map((h) => (
-                <th key={h} className="px-3 py-2 text-start font-medium">{t(h)}</th>
+              {COLUMNS.map((h) => (
+                <th key={h} scope="col" className="px-3 py-2 text-start font-medium">{t(h)}</th>
               ))}
             </tr>
           </thead>
@@ -30,7 +32,7 @@ export default function IntegrationsTable() {
                 </td>
                 <td className="px-3 text-slate-500 dark:text-slate-400">{t(r.k)}</td>
                 <td className="px-3">
-                  {/* شريط التقدم يستخدم bg-primary فيتبع اللون المختار */}
+
                   <span className="flex items-center gap-2">
                     <span className="h-1.5 w-24 rounded-full bg-slate-100 dark:bg-slate-700">
                       <span className="block h-full rounded-full bg-primary" style={{ width: `${r.r}%` }} />

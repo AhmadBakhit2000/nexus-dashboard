@@ -1,5 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import { useSettings } from "../../context/SettingsContext";
+import { useSettings } from "../../context/useSettings";
 import { distributionData } from "../../data/mock";
 import { card } from "../common/styles";
 
@@ -17,7 +17,7 @@ export default function DistributionChart() {
           </div>
         ))}
       </div>
-      <div className="h-44" dir="ltr">
+      <div className="h-44" dir="ltr" role="img" aria-label={t("dist")}>
         <ResponsiveContainer>
           <PieChart>
             <Pie data={distributionData} dataKey="v" innerRadius={55} outerRadius={80} paddingAngle={3} stroke="none">

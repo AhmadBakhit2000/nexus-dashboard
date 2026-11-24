@@ -1,7 +1,11 @@
 import { TrendingDown, TrendingUp } from "lucide-react";
 
-// شارة النسبة: خضراء للارتفاع وحمراء للانخفاض
-export default function Badge({ value, up }) {
+interface BadgeProps {
+  value: string;
+  up?: boolean;
+}
+
+export default function Badge({ value, up = false }: BadgeProps) {
   const Icon = up ? TrendingUp : TrendingDown;
   const tone = up
     ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400"
